@@ -1,5 +1,23 @@
 use lsystem::{lsystem::LSystem, rules::Rules};
 
+/*
+Rules:
+A -> AB
+B -> A
+
+Axiom: A
+
+Produces:
+n = 0 : A
+n = 1 : AB
+n = 2 : ABA
+n = 3 : ABAAB
+n = 4 : ABAABABA
+n = 5 : ABAABABAABAAB
+n = 6 : ABAABABAABAABABAABABA
+n = 7 : ABAABABAABAABABAABABAABAABABAABAAB
+*/
+
 fn main() {
     /* Setup */
     let mut rules = Rules::<char>::new();
