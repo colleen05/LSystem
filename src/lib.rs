@@ -1,3 +1,3 @@
-pub mod lrulemap;
-pub mod lrules;
 pub mod lsystem;
+pub mod rulemap;
+pub mod rules;
