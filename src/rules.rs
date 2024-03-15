@@ -51,10 +51,7 @@ where
                     format!(
                         "{} -> {}",
                         k.to_string(),
-                        v.iter()
-                            .map(|p| p.to_string())
-                            .collect::<Vec<_>>()
-                            .join(" ")
+                        v.iter().map(|p| p.to_string()).collect::<Vec<_>>().join("")
                     )
                 })
                 .collect::<Vec<_>>()
