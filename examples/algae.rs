@@ -25,27 +25,28 @@ fn main() {
     rules.set('B', vec!['A']);
 
     let axiom = &['A'];
-    let mut system = LSystem::<char>::new(rules.clone(), axiom);
+    let system = LSystem::<char>::new(rules.clone(), axiom);
 
     /* Printing context */
-    println!("Rules:\n{}", rules);
-
-    print!("\nAxiom: ");
-    for c in axiom {
-        print!("{} ", c);
-    }
+    println!("Rules:\n{}\n", rules);
+    println!(
+        "Axiom: {}\n",
+        axiom
+            .iter()
+            .map(|a| a.to_string())
+            .collect::<Vec<_>>()
+            .join("")
+    );
 
     /* Iterating */
-    println!("\n\nProduces:");
-    for n in 0..=7 {
-        print!("n = {} : ", n);
+    println!("Produces:");
 
-        for c in system.state() {
-            print!("{}", c);
-        }
+    let generations = system
+        .take(7)
+        .map(|c| c.into_iter().collect::<String>())
+        .collect::<Vec<_>>();
 
-        println!(" ");
-
-        system.next();
+    for (n, s) in generations.iter().enumerate() {
+        println!("n = {} : {}", n, s);
     }
 }
