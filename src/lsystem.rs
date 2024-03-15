@@ -39,10 +39,10 @@ where
     type Item = Vec<T>;
 
     fn next(&mut self) -> Option<Vec<T>> {
-        let mut next_state = Vec::<T>::with_capacity(self.state.len());
+        let mut next_state = Vec::with_capacity(self.state.len());
         let mut changed = false;
 
-        for k in self.state.iter() {
+        for k in &self.state {
             if let Some(v) = self.rules.map(k) {
                 next_state.extend(v);
                 changed = true;
