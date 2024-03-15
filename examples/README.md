@@ -38,7 +38,7 @@ This will generate a sequence of characters that can be interpreted to draw bina
 When run, the program should output the above information.
 
 ## Sierpinski Triangle (sierpinski_triangle.rs)
-This will generate a sequence of characters that can be interpreted to draw a Sierpinski triangle fractal, described [here](Example_5:_Sierpinski_triangle).
+This will generate a sequence of characters that can be interpreted to draw a Sierpinski triangle fractal, described [here](https://en.wikipedia.org/wiki/L-system#Example_5:_Sierpinski_triangle).
 
 **Rules:** \
 **G** -> GG \
