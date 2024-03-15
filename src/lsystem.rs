@@ -40,21 +40,22 @@ where
 
     fn next(&mut self) -> Option<Vec<T>> {
         let mut n = Vec::<T>::with_capacity(self.state.len());
+        let mut changed = false;
 
         for k in self.state.iter() {
             if let Some(v) = self.rules.map(k) {
-                n = [n, v].concat();
+                n.extend(v);
+                changed = true;
             } else {
                 n.push(k.clone());
             }
         }
 
-        match n {
-            n if n != self.state => {
-                self.state = n;
-                Some(self.state.clone())
-            }
-            _ => None,
+        if changed {
+            self.state = n;
+            Some(self.state.clone())
+        } else {
+            None
         }
     }
 }
