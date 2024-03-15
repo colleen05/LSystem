@@ -24,22 +24,11 @@ fn main() {
     rules.set('A', vec!['A', 'B']);
     rules.set('B', vec!['A']);
 
-    let p = rules.productions.clone();
-
     let axiom = &['A'];
-    let mut system = LSystem::<char>::new(rules, axiom);
+    let mut system = LSystem::<char>::new(rules.clone(), axiom);
 
     /* Printing context */
-    println!("Rules:");
-    for (k, v) in p {
-        print!("{} -> ", k);
-
-        for v in v {
-            print!("{}", v);
-        }
-
-        println!(" ");
-    }
+    println!("Rules:\n{}", rules);
 
     print!("\nAxiom: ");
     for c in axiom {

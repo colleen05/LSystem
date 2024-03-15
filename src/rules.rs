@@ -1,6 +1,11 @@
-use std::{collections::HashMap, hash::Hash};
+use core::fmt;
+use std::{
+    collections::HashMap,
+    fmt::{Display, Formatter},
+    hash::Hash,
+};
 
-#[derive(Default)]
+#[derive(Default, Clone)]
 pub struct Rules<T: Hash + Eq> {
     pub productions: HashMap<T, Vec<T>>,
 }
@@ -29,5 +34,31 @@ where
 
     pub fn map(&self, k: &T) -> Option<Vec<T>> {
         self.productions.get(k).cloned()
+    }
+}
+
+impl<T> Display for Rules<T>
+where
+    T: Hash + Eq + ToString,
+{
+    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
+        write!(
+            f,
+            "{}",
+            self.productions
+                .iter()
+                .map(|(k, v)| {
+                    format!(
+                        "{} -> {}",
+                        k.to_string(),
+                        v.iter()
+                            .map(|p| p.to_string())
+                            .collect::<Vec<_>>()
+                            .join(" ")
+                    )
+                })
+                .collect::<Vec<_>>()
+                .join("\n")
+        )
     }
 }
