@@ -42,20 +42,14 @@ where
     T: Hash + Eq + ToString,
 {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        write!(
-            f,
-            "{}",
-            self.productions
-                .iter()
-                .map(|(k, v)| {
-                    format!(
-                        "{} -> {}",
-                        k.to_string(),
-                        v.iter().map(|p| p.to_string()).collect::<Vec<_>>().join("")
-                    )
-                })
-                .collect::<Vec<_>>()
-                .join("\n")
-        )
+        for (k, v) in &self.productions {
+            writeln!(
+                f,
+                "{} -> {}",
+                k.to_string(),
+                v.iter().map(|p| p.to_string()).collect::<String>()
+            )?;
+        }
+        Ok(())
     }
 }
