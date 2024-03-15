@@ -75,3 +75,5 @@ for c in s:
     elif c == "+":
         t.right(120)
 ```
+
+![Result](images/sierpinski_triangle_rendered.png)
