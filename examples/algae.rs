@@ -41,12 +41,9 @@ fn main() {
     /* Iterating */
     println!("Produces:");
 
-    let generations = system
-        .take(7)
-        .map(|c| c.into_iter().collect::<String>())
-        .collect::<Vec<_>>();
+    let generations = system.take(7).collect::<Vec<_>>();
 
     for (n, s) in generations.iter().enumerate() {
-        println!("n = {} : {}", n, s);
+        println!("n = {} : {}", n, s.iter().collect::<String>());
     }
 }
