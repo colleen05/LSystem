@@ -23,12 +23,12 @@ t.sety(-200)
 t.pendown()
 
 for c in s:
-if c == "F" or c == "G":
-    t.forward(3.9) # Make this value bigger for smaller generations.
-elif c == "-":
-    t.left(120)
-elif c == "+":
-    t.right(120)
+    if c == "F" or c == "G":
+        t.forward(3.9) # Make this value bigger for smaller generations.
+    elif c == "-":
+        t.left(120)
+    elif c == "+":
+        t.right(120)
 ```
 */
 
